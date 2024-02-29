@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
@@ -19,7 +20,7 @@ namespace SuperHeroAPI_DotNet8.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult<List<SuperHero>>> getAllHeroes()
         {
 
@@ -29,7 +30,7 @@ namespace SuperHeroAPI_DotNet8.Controllers
             return Ok(heroes);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult<SuperHero>> getHero(int id)
         {
 
@@ -43,7 +44,7 @@ namespace SuperHeroAPI_DotNet8.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult<List<SuperHero>>> addHero(SuperHero hero)
         {
 
@@ -54,7 +55,7 @@ namespace SuperHeroAPI_DotNet8.Controllers
             return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
 
         public async Task<ActionResult<List<SuperHero>>> updateHero( SuperHero updatedHero)
         {
@@ -75,7 +76,7 @@ namespace SuperHeroAPI_DotNet8.Controllers
             return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize]
         public async Task<ActionResult<List<SuperHero>>> deleteHero(int id)
         {
 
