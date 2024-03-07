@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>SuperHeroAPI_DotNet8</RootNamespace>
+    <UserSecretsId>ac107456-0349-47eb-85df-39c81ea67dcb</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

@@ -42,6 +42,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(options =>
+{
+    options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200", "https://web.postman.co");
+});
+
 app.MapIdentityApi<IdentityUser>();
 
 app.UseHttpsRedirection();
